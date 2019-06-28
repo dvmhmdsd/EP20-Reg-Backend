@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 })
 
 app.post("/register", (req, res) => {
+    res.send("Request Recieved");
     //Adding the row to the sheet
     Gsheet.createRow(req.body, (err, row) => {
         if (!err) res.sendStatus(200);
