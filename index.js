@@ -1,11 +1,11 @@
 // add the dependencies
-const express = require("express");
-const path = require("path");
-const bodyParser = require("body-parser");
-const expressValidator = require("express-validator");
+const express           = require("express");
+const path              = require("path");
+const bodyParser        = require("body-parser");
+const expressValidator  = require("express-validator");
 
 //Export Google Sheets API config file
-const Gsheet = require("./config/sheet");
+const Gsheet            = require("./config/sheet");
 
 // // get the router of registeration
 // const register = require("./routers/register");
@@ -19,6 +19,11 @@ app.use(bodyParser.json());
 
 // // set the register router
 // app.use("/register", register);
+
+//Added for testing
+app.get('/', (req, res) => {
+  res.send('<h1>Running ... </h1>');
+})
 
 app.post("/register", (req, res) => {
     //Adding the row to the sheet
