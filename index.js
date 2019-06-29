@@ -20,6 +20,9 @@ app.use(bodyParser.json());
 // // set the register router
 // app.use("/register", register);
 
+// allow cors
+app.use(require("cors")());
+
 //Added for testing
 app.get('/', (req, res) => {
   res.send('<h1>Running ... </h1>');
