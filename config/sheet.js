@@ -7,12 +7,14 @@ const creds = require("./client_secret.json");
 var sheet;
 
 async function setup() {
-    const doc = new googleSheet('1fCSLs_zB7Jq2GDnk-9nNhcTj2bYv06ToXvTt_9H-3NE');
+    const doc = new googleSheet('1wRglbpPNxBYlN9nckwrqyxIfgos-1L1s13n4g8c6E2k');
     await promisify(doc.useServiceAccountAuth)(creds);
 
     const info = await promisify(doc.getInfo)();
     sheet = info.worksheets[0];
 }
+
+setup();
 
 module.exports = {
     test: async function() {

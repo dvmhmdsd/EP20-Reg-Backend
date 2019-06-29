@@ -17,9 +17,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
+app.set('view engine', 'pug');
 // // set the register router
 // app.use("/register", register);
 
+app.get('/', (req, res) => {
+  res.render('home');
+})
 app.post("/register", (req, res) => {
     //Adding the row to the sheet
     Gsheet.createRow(req.body, (err, row) => {
