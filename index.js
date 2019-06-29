@@ -1,17 +1,19 @@
 // add the dependencies
-const express           = require("express");
-const path              = require("path");
-const bodyParser        = require("body-parser");
-const expressValidator  = require("express-validator");
+const express     = require("express");
+const path        = require("path");
+const bodyParser  = require("body-parser");
 
 //Export Google Sheets API config file
-const Gsheet            = require("./config/sheet");
+const Gsheet      = require("./config/sheet");
 
 // // get the router of registeration
 // const register = require("./routers/register");
 
 // init the app
 const app = express();
+
+// allow cors
+app.use(require("cors")());
 
 // init body parser
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -30,12 +32,12 @@ app.get('/', (req, res) => {
 
 app.post("/register", (req, res) => {
     res.send("Request Recieved");
+    
     //Adding the row to the sheet
     Gsheet.createRow(req.body, (err, row) => {
         if (!err) res.sendStatus(200);
     });
 });
-
 
 // make the port dynamically set
 const PORT = process.env.PORT || 4000;
